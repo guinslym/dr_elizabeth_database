@@ -1,0 +1,89 @@
+{
+    "contributors_enabled": false,
+    "created_at": "Mon Jan 05 23:54:07 +0000 2009",
+    "default_profile": false,
+    "default_profile_image": false,
+    "description": "Senior writer with CBC.ca",
+    "entities": {
+        "description": {
+            "urls": []
+        }
+    },
+    "favourites_count": 30,
+    "follow_request_sent": false,
+    "followers_count": 21343,
+    "following": false,
+    "friends_count": 137,
+    "geo_enabled": false,
+    "has_extended_profile": false,
+    "id": 18652307,
+    "id_str": "18652307",
+    "is_translation_enabled": false,
+    "is_translator": false,
+    "lang": "en",
+    "listed_count": 841,
+    "location": "Ottawa, Ontario",
+    "name": "Aaron Wherry",
+    "notifications": false,
+    "profile_background_color": "12FFC4",
+    "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/91948706/288866.jpg",
+    "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/91948706/288866.jpg",
+    "profile_background_tile": false,
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/18652307/1442024249",
+    "profile_image_url": "http://pbs.twimg.com/profile_images/689122054709362688/5oT7ZA5Q_normal.jpg",
+    "profile_image_url_https": "https://pbs.twimg.com/profile_images/689122054709362688/5oT7ZA5Q_normal.jpg",
+    "profile_link_color": "0084B4",
+    "profile_sidebar_border_color": "C0DEED",
+    "profile_sidebar_fill_color": "DDEEF6",
+    "profile_text_color": "333333",
+    "profile_use_background_image": true,
+    "protected": false,
+    "screen_name": "AaronWherry",
+    "status": {
+        "contributors": null,
+        "coordinates": null,
+        "created_at": "Wed May 18 14:51:25 +0000 2016",
+        "entities": {
+            "hashtags": [],
+            "symbols": [],
+            "urls": [
+                {
+                    "display_url": "twitter.com/KarlBelanger/s…",
+                    "expanded_url": "https://twitter.com/KarlBelanger/status/732946530244661250",
+                    "indices": [
+                        26,
+                        49
+                    ],
+                    "url": "https://t.co/NPnsCvn3I3"
+                }
+            ],
+            "user_mentions": []
+        },
+        "favorite_count": 6,
+        "favorited": false,
+        "geo": null,
+        "id": 732946699283501056,
+        "id_str": "732946699283501056",
+        "in_reply_to_screen_name": null,
+        "in_reply_to_status_id": null,
+        "in_reply_to_status_id_str": null,
+        "in_reply_to_user_id": null,
+        "in_reply_to_user_id_str": null,
+        "is_quote_status": true,
+        "lang": "nl",
+        "place": null,
+        "possibly_sensitive": false,
+        "quoted_status_id": 732946530244661250,
+        "quoted_status_id_str": "732946530244661250",
+        "retweet_count": 3,
+        "retweeted": false,
+        "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+        "text": "\"Even Peter Van Loan...\" \nhttps://t.co/NPnsCvn3I3",
+        "truncated": false
+    },
+    "statuses_count": 27004,
+    "time_zone": "Eastern Time (US & Canada)",
+    "url": null,
+    "utc_offset": -14400,
+    "verified": true
+}
