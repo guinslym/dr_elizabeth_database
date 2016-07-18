@@ -17,8 +17,7 @@ class User(TimestampMixin, Base):
     name = Column(String(250), nullable=False)
     screen_name = Column(String(250), nullable=False)
 
-
-class Profile(Base):
+class Profile(TimestampMixin, Base):
     __tablename__ = 'profile'
     id = Column(Integer, primary_key=True)
     verified = Column(Integer)
@@ -39,7 +38,7 @@ class Profile(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
-class Tweet(Base):
+class Tweet(TimestampMixin, Base):
     __tablename__ = 'tweet'
     id = Column(Integer, primary_key=True)
     tweet = Column(String(250), nullable=False)
@@ -50,7 +49,7 @@ class Tweet(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
-class Mention(Base):
+class Mention(TimestampMixin, Base):
     __tablename__ = 'mention'
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
@@ -58,14 +57,14 @@ class Mention(Base):
     tweet_id = Column(Integer, ForeignKey('tweet.id'))
     tweet = relationship(Tweet)
 
-class Hashtag(Base):
+class Hashtag(TimestampMixin, Base):
     __tablename__ = 'hashtag'
     id = Column(Integer, primary_key=True)
     text = Column(String(250), nullable=False)
     tweet_id = Column(Integer, ForeignKey('tweet.id'))
     tweet = relationship(Tweet)
 
-class Url(Base):
+class Url(TimestampMixin, Base):
     __tablename__ = 'url'
     id = Column(Integer, primary_key=True)
     expanded_url = Column(String(250), nullable=False)
@@ -73,7 +72,7 @@ class Url(Base):
     tweet_id = Column(Integer, ForeignKey('tweet.id'))
     tweet = relationship(Tweet)
 
-class Picture(Base):
+class Picture(TimestampMixin, Base):
     __tablename__ = 'picture'
     id = Column(Integer, primary_key=True)
     profile_image_url = Column(String(250), nullable=False)
