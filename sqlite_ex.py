@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class TimestampMixin(object):
-    created_at = Column(DateTime, default=func.now())
+    created_at = Column(DateTime, default=datetime.now())
 
 class User(TimestampMixin, Base):
     __tablename__ = 'user'
