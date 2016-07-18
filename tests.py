@@ -3,7 +3,19 @@
 
 from unittest.mock import MagicMock,Mock
 import unittest
+import sqlalchemy
 import sqlite3
+
+import os
+from os import listdir
+from os.path import isfile, join
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+
+from sqlite_ex import Tweet, Base, User, Picture, Mention
+from sqlite_ex import Hashtag, Url, create_table, Profile
 
 class MyTests(unittest.TestCase):
 
@@ -51,3 +63,23 @@ class DataBaseClass():
 
     def __init__(self,connection_string='test_database'):
         self.connection = sqlite3.connect(connection_string)
+
+
+class DrElizabethProject(unittest.TestCase):
+    """
+    """
+
+
+    def setUp(self):
+        create_table('test_db.db')
+
+
+    def tearDown(self):
+        try:
+            os.remove("test_db.db")
+        except:
+            pass
+
+
+    def test_avatar(self):
+        assert 1 == True

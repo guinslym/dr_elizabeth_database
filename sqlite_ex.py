@@ -79,14 +79,14 @@ class Picture(TimestampMixin, Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
-def create_table():
+def create_table(dbname="dr_elizabeth_research.db"):
     try:
-        os.remove("dr_elizabeth_research.db")
+        os.remove(dbname)
     except:
         pass
     # Create an engine that stores data in the local directory's
     # sqlalchemy_example.db file.
-    engine = create_engine('sqlite:///dr_elizabeth_research.db')
+    engine = create_engine('sqlite:///'+dbname)
 
     # Create all tables in the engine. This is equivalent to "Create Table"
     # statements in raw SQL.
