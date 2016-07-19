@@ -171,7 +171,6 @@ def parse_value(data):
 def parse_each_file(onlyjson):
     """
     """
-    #onlyjson = get_all_the_json_files()
     for i in onlyjson:
         data = get_the_json_value(i)
         parse_value(data)
