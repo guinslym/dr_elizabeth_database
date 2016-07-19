@@ -88,6 +88,7 @@ class DrElizabethProject(unittest.TestCase):
         assert str(created_at.year) == this_date.get('created_at').split()[-1]
 
     def test_file(self):
-        from sqlalchemy_insert import get_the_json_value
+        "Not yet tested"
         import json
+        from sqlalchemy_insert import get_the_json_value
         assert 1 == True

@@ -67,7 +67,7 @@ def create_new_tweet(data, new_user):
     in_reply_to_user = data.get('in_reply_to_user_id')
     coord = check_if_it_s_null(data.get('coordinates'))
     geo_location = check_if_it_s_null(data.get('geo'))
-    created_at = parse(this_date.get('created_at'))
+    created_at = parse(data.get('created_at'))
     new_tweet = Tweet(id=tweet_id, tweet=tweet_text,
                     lang=language,created_at=created_at,
                     geo=geo_location, coordinates=coord,
@@ -134,7 +134,7 @@ def create_new_profile(data, new_user):
     des  = data.get('description')
     pro_img_url  = data.get('profile_image_url')
     #Need to come back for the proper parsing of the date
-    created_at = parse(this_date.get('created_at'))
+    created_at = parse(data.get('created_at'))
     t_zone = check_if_it_s_null(data.get('time_zone'))#null
     new_profile = Profile(verified=verify, location=loca,
         default_profile=def_pro, default_profile_image=def_pro_image,
