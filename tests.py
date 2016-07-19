@@ -6,6 +6,7 @@ import unittest
 import sqlalchemy
 import sqlite3
 from datetime import datetime
+from dateutil.parser import parse
 
 import os
 from os import listdir
@@ -81,9 +82,12 @@ class DrElizabethProject(unittest.TestCase):
         except:
             pass
 
-
     def test_datetime(self):
         this_date = {"created_at": "Wed May 04 21:45:09 +0000 2016"}
-        created_at = this_date.get('created_at')
-        
+        created_at = parse(this_date.get('created_at'))
+        assert str(created_at.year) == this_date.get('created_at').split()[-1]
+
+    def test_file(self):
+        from sqlalchemy_insert import get_the_json_value
+        import json
         assert 1 == True

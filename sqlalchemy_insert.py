@@ -8,6 +8,7 @@ from sqlalchemy.orm import sessionmaker
 
 from sqlite_ex import Tweet, Base, User, Picture, Mention
 from sqlite_ex import Hashtag, Url, create_table, Profile
+from dateutil.parser import parse
 
 engine = create_engine('sqlite:///dr_elizabeth_research.db')
 Base.metadata.bind = engine
@@ -66,8 +67,9 @@ def create_new_tweet(data, new_user):
     in_reply_to_user = data.get('in_reply_to_user_id')
     coord = check_if_it_s_null(data.get('coordinates'))
     geo_location = check_if_it_s_null(data.get('geo'))
+    created_at = parse(this_date.get('created_at'))
     new_tweet = Tweet(id=tweet_id, tweet=tweet_text,
-                    lang=language,
+                    lang=language,created_at=created_at,
                     geo=geo_location, coordinates=coord,
                     user=new_user)
     session.add(new_tweet)
@@ -132,14 +134,14 @@ def create_new_profile(data, new_user):
     des  = data.get('description')
     pro_img_url  = data.get('profile_image_url')
     #Need to come back for the proper parsing of the date
-    created = (data.get('created_at'))
+    created_at = parse(this_date.get('created_at'))
     t_zone = check_if_it_s_null(data.get('time_zone'))#null
     new_profile = Profile(verified=verify, location=loca,
         default_profile=def_pro, default_profile_image=def_pro_image,
         favourites_count=fav_count, time_zone=t_zone,
         followers_count=fol_count, statuses_count=sta_count,
         friends_count=fri_count,description=des,
-        profile_image_url=pro_img_url, created_at=created,
+        profile_image_url=pro_img_url, created_at=created_at,
                     user=new_user)
     session.add(new_profile)
     session.commit()
@@ -159,7 +161,7 @@ def parse_value(data):
 def parse_each_file(onlyjson):
     """
     """
-    onlyjson = get_all_the_json_files()
+    #onlyjson = get_all_the_json_files()
     for i in onlyjson:
         data = get_the_json_value(i)
         parse_value(data)

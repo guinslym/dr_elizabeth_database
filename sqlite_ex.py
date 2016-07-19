@@ -9,7 +9,7 @@ from sqlalchemy import create_engine
 Base = declarative_base()
 
 class TimestampMixin(object):
-    created_at = Column(DateTime, default=datetime.now())
+    created = Column(DateTime, default=datetime.now())
 
 class User(TimestampMixin, Base):
     __tablename__ = 'user'
@@ -29,9 +29,8 @@ class Profile(TimestampMixin, Base):
     followers_count = Column(Integer)
     statuses_count = Column(Integer)
     friends_count = Column(Integer)
-    #I don't know if the end db will be MYSLQ, PG or Mongo
-    #created_at = Column(DateTime)
-    created_at = Column(String(250))
+    #I don't know if the end db will be MYSLQ or Mongo
+    created_at = Column(DateTime)
     time_zone = Column(String(250))
     profile_image_url = Column(String(250))
     description = Column(String(250))
@@ -46,6 +45,7 @@ class Tweet(TimestampMixin, Base):
     in_reply_to_user_id = Column(Integer)
     coordinates = Column(Integer)
     geo = Column(Integer)
+    created_at = Column(DateTime)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
