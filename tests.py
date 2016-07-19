@@ -5,6 +5,7 @@ from unittest.mock import MagicMock,Mock
 import unittest
 import sqlalchemy
 import sqlite3
+from datetime import datetime
 
 import os
 from os import listdir
@@ -81,5 +82,8 @@ class DrElizabethProject(unittest.TestCase):
             pass
 
 
-    def test_avatar(self):
+    def test_datetime(self):
+        this_date = {"created_at": "Wed May 04 21:45:09 +0000 2016"}
+        created_at = this_date.get('created_at')
+        
         assert 1 == True
