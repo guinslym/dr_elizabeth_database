@@ -20,6 +20,9 @@ mypath = os.path.dirname(os.path.realpath(__file__))
 
 def check_if_it_s_null(value):
     """
+    Check if it's an Object or not
+    a = {"hashtags": []}
+    a == NoneType
     """
     if type(value).__name__ == 'NoneType':
         return 0
@@ -37,6 +40,7 @@ def get_all_the_json_files():
 
 def get_the_json_value(filename):
     """
+    open the file and get the content
     """
     print(filename)
     with open(filename, encoding='utf-8') as data_file:
@@ -46,6 +50,7 @@ def get_the_json_value(filename):
 
 def create_new_user(data):
     """
+    insert new user into db
     """
     #user
     s_name = (data.get('user').get('screen_name'))
@@ -59,6 +64,7 @@ def create_new_user(data):
 
 def create_new_tweet(data, new_user):
     """
+    insert new tweet into db
     """
     #tweet
     tweet_id = data.get('id')
@@ -78,6 +84,7 @@ def create_new_tweet(data, new_user):
 
 def create_new_mention(data, new_tweet):
     """
+    insert new mention into db
     """
     #Mention
     mentions = data.get('entities').get('user_mentions')
@@ -93,6 +100,7 @@ def create_new_mention(data, new_tweet):
 
 def create_new_hashtags(data, new_tweet):
     """
+    insert new hashtags into db
     """
     #Mention
     hashtags = data.get('entities').get('hashtags')
@@ -105,6 +113,7 @@ def create_new_hashtags(data, new_tweet):
 
 def create_new_urls(data, new_tweet):
     """
+    insert new urls into db
     """
     #Mention
     urls = data.get('entities').get('urls')
@@ -119,6 +128,7 @@ def create_new_urls(data, new_tweet):
 
 def create_new_profile(data, new_user):
     """
+    insert new profile into db
     """
     #tweet
     data = data.get('user')
