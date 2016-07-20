@@ -61,6 +61,8 @@ def create_new_user(data):
         new_user = User(id=user_id, name=user_name, screen_name=s_name)
         session.add(new_user)
         session.commit()
+        #creating a profile
+        create_new_profile(data, new_user)
     return new_user
 
 
@@ -163,7 +165,6 @@ def parse_value(data):
     """
     #user
     new_user = create_new_user(data)
-    create_new_profile(data, new_user)
     #tweet
     new_tweet = create_new_tweet(data, new_user)
     create_new_mention(data, new_tweet)

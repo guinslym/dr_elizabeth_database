@@ -1,3 +1,5 @@
 *.db
+*.zip
+live_tweets/
 .cache/
 __pycache__/
