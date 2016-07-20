@@ -79,7 +79,7 @@ def create_new_tweet(data, new_user):
     geo_location = check_if_it_s_null(data.get('geo'))
     created_at = parse(data.get('created_at'))
     try:
-        new_tweet = Tweet(id=tweet_id, tweet=tweet_text,
+        new_tweet = Tweet(tweetid=tweet_id, tweet=tweet_text,
                     lang=language,created_at=created_at,
                     geo=geo_location, coordinates=coord,
                     user=new_user)

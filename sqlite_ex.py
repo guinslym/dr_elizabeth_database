@@ -40,6 +40,7 @@ class Profile(TimestampMixin, Base):
 class Tweet(TimestampMixin, Base):
     __tablename__ = 'tweet'
     id = Column(Integer, primary_key=True)
+    tweetid = Column(Integer)
     tweet = Column(String(250), nullable=False)
     lang = Column(String(7))
     in_reply_to_user_id = Column(Integer)
