@@ -78,11 +78,14 @@ def create_new_tweet(data, new_user):
     coord = check_if_it_s_null(data.get('coordinates'))
     geo_location = check_if_it_s_null(data.get('geo'))
     created_at = parse(data.get('created_at'))
-    new_tweet = Tweet(id=tweet_id, tweet=tweet_text,
+    try:
+        new_tweet = Tweet(id=tweet_id, tweet=tweet_text,
                     lang=language,created_at=created_at,
                     geo=geo_location, coordinates=coord,
                     user=new_user)
-    session.add(new_tweet)
+        session.add(new_tweet)
+    except:
+        import ipdb; ipdb.set_trace()
     session.commit()
     return new_tweet
 
@@ -173,6 +176,7 @@ def parse_value(data):
 
 def parse_each_file(onlyjson):
     """
+    Insert the content of the file into the DB
     """
     total_file = len(onlyjson)
     for i in onlyjson:
