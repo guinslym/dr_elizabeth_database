@@ -9,7 +9,6 @@ from sqlalchemy.orm import sessionmaker
 from sqlite_ex import Tweet, Base, User, Picture, Mention
 from sqlite_ex import Hashtag, Url, create_table, Profile
 from dateutil.parser import parse
-from threading import Thread
 
 engine = create_engine('sqlite:///dr_elizabeth_research.db')
 Base.metadata.bind = engine
@@ -18,49 +17,6 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 mypath = os.path.dirname(os.path.realpath(__file__))
-
-def create_a_list_of_list(data):
-    final_list=[]
-    b =[]
-    # You don't need `a` to be a list here, just iterate the `range` object
-    for num in data:
-        if len(b) < 5:
-            b.append(num)
-        else:
-            # Add `b` to `final_list` here itself, so that you don't have
-            # to check if `b` has 3 elements in it, later in the loop.
-            final_list.append(b)
-
-            # Since `b` already has 3 elements, create a new list with one element
-            b = [num]
-
-    # `b` might have few elements but not exactly 3. So, add it if it is not empty
-    if len(b) != 0:
-        final_list.append(b)
-
-    return final_list
-
-def send_this_data_to_the_thread_function(data_list_json):
-    """
-    data_list_json=[
-        ['60c74c27-3a08-46eb-a624-0954f582219a.json',
-          '6d7d0c9c-fc51-4acc-9afc-fb0bf2ef9cf4.json',
-          '0000eb71-177c-4153-b4f2-779d53cf0130.json',
-          '0001082b-4842-404c-afe0-003c8f9061cb.json',
-          '00006244-b977-43c2-8e86-e2f3c888f84e.json'],
-         ['000005f0-c1cb-4a5b-9756-f579cc686928.json',
-          '00000b61-6e7e-42c6-97af-cecf46951c48.json']
-    ]
-    """
-    for list_of_list in data_list_json:
-        threadlist = []
-        #for u in list_of_list:
-        for u in list_of_list:
-            t = Thread(target=parse_each_file, args=(u,))
-            t.start()
-            threadlist.append(t)
-        for b in threadlist:
-            b.join()
 
 def check_if_it_s_null(value):
     """
@@ -222,17 +178,15 @@ def parse_each_file(onlyjson):
     """
     Insert the content of the file into the DB
     """
-    #import ipdb; ipdb.set_trace()
-    #for i in onlyjson:
-    data = get_the_json_value(onlyjson)
-    parse_value(data)
+    total_file = len(onlyjson)
+    for i in onlyjson:
+        print(str(onlyjson.index(i)) + ' / ' + str(total_file))
+        data = get_the_json_value(i)
+        parse_value(data)
 
 if __name__ == '__main__':
     #todo:
     ##need to add comments
-    create_table('other_table.db')
+    create_table()
     json_files = get_all_the_json_files()
-    json_files = create_a_list_of_list(json_files)
-    #import ipdb; ipdb.set_trace()
-    send_this_data_to_the_thread_function(json_files)
-    #parse_each_file(json_files)
+    parse_each_file(json_files)
