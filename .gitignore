@@ -3,3 +3,4 @@
 live_tweets/
 .cache/
 __pycache__/
+targets/
