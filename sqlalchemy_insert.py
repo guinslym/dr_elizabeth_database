@@ -56,9 +56,11 @@ def create_new_user(data):
     s_name = (data.get('user').get('screen_name'))
     user_name = (data.get('user').get('name'))
     user_id = (data.get('user').get('id'))
-    new_user = User(id=user_id, name=user_name, screen_name=s_name)
-    session.add(new_user)
-    session.commit()
+    new_user = session.query(User).filter(User.id == user_id)
+    if new_user.count() == 0:
+        new_user = User(id=user_id, name=user_name, screen_name=s_name)
+        session.add(new_user)
+        session.commit()
     return new_user
 
 
@@ -171,7 +173,9 @@ def parse_value(data):
 def parse_each_file(onlyjson):
     """
     """
+    total_file = len(onlyjson)
     for i in onlyjson:
+        print(str(onlyjson.index(i)) + ' / ' + str(total_file))
         data = get_the_json_value(i)
         parse_value(data)
 
