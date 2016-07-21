@@ -9,9 +9,11 @@ from sqlalchemy.orm import sessionmaker
 from sqlite_ex import Tweet, Base, User, Picture, Mention
 from sqlite_ex import Hashtag, Url, create_table, Profile
 from dateutil.parser import parse
+from datetime import datetime
 
-engine = create_engine('sqlite:///dr_elizabeth_research.db')
+engine = create_engine('mysql+pymysql://root:root@localhost/communications?charset=utf8')
 Base.metadata.bind = engine
+import pymysql
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
@@ -179,7 +181,7 @@ def parse_each_file(onlyjson):
     Insert the content of the file into the DB
     """
     total_file = len(onlyjson)
-    for i in onlyjson:
+    for i in onlyjson[0:200]:
         print(str(onlyjson.index(i)) + ' / ' + str(total_file))
         data = get_the_json_value(i)
         parse_value(data)
@@ -187,6 +189,9 @@ def parse_each_file(onlyjson):
 if __name__ == '__main__':
     #todo:
     ##need to add comments
-    create_table()
+    beginning = datetime.now()
+    #create_table()
     json_files = get_all_the_json_files()
     parse_each_file(json_files)
+    print(beginning)
+    print(datetime.now())
